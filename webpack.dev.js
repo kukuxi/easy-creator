@@ -1,9 +1,12 @@
 const path = require('path');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+
 const webpack = require('webpack');
 module.exports = {
     entry: {
-        index: './src/index.js',
-        search: './src/search.js'
+        index: './src/index/index.js',
+        search: './src/search/index.js'
     },
     output: {
         path: path.join(__dirname, 'dist'),
@@ -54,5 +57,5 @@ module.exports = {
     devServer: {
         contentBase: './dist',
         hot: true
-    }
+    },
 }

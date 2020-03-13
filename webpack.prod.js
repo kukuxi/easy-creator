@@ -6,14 +6,14 @@ const HtmlWebpackPlugins = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 module.exports = {
     entry: {
-        index: './src/index.js',
-        search: './src/search.js'
+        index: './src/index/index.js',
+        search: './src/search/index.js'
     },
     output: {
         path: path.join(__dirname, 'dist'),
         filename: '[name]_[chunkhash:8].js',
     },
-    mode: 'production',
+    mode: 'none',
     module: {
         rules: [
             {
@@ -65,7 +65,7 @@ module.exports = {
             cssProcessor: require('cssnano')
         }),
         new HtmlWebpackPlugins({
-            template: path.join(__dirname, 'src/search.html'),
+            template: path.join(__dirname, 'src/search/ search.html'),
             filename: 'search.html',
             chunks: ['search'],
             inject: true,
@@ -80,4 +80,5 @@ module.exports = {
         }),
         new CleanWebpackPlugin()
     ],
+    devtool: 'source-map'
 }
