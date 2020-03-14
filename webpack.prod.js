@@ -4,6 +4,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const HtmlWebpackPlugins = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const HtmlWebpackExternalsPlugin = require('html-webpack-externals-plugin')
 module.exports = {
     entry: {
         index: './src/index/index.js',
@@ -65,7 +66,7 @@ module.exports = {
             cssProcessor: require('cssnano')
         }),
         new HtmlWebpackPlugins({
-            template: path.join(__dirname, 'src/search/ search.html'),
+            template: path.join(__dirname, 'src/search/index.html'),
             filename: 'search.html',
             chunks: ['search'],
             inject: true,
@@ -77,6 +78,19 @@ module.exports = {
                 minifyJS: true,
                 removeComments: false
             }
+        }),
+        new HtmlWebpackExternalsPlugin({
+            externals: [
+                {
+                    module: 'react',
+                    entry: 'https://11.url.cn/now/lib/16.2.0/react.min.js', // 此处最好用其他的cdn地址
+                    global: 'React',
+                },
+                {
+                    module: 'react-dom',
+                    entry: 'https://11.url.cn/now/lib/16.2.0/react-dom.min.js',
+                    global: 'ReactDOM',
+                }]
         }),
         new CleanWebpackPlugin()
     ],
