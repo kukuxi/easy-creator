@@ -68,7 +68,7 @@ module.exports = {
         new HtmlWebpackPlugins({
             template: path.join(__dirname, 'src/search/index.html'),
             filename: 'search.html',
-            chunks: ['search'],
+            chunks: ['vendors', 'search'],
             inject: true,
             minify: {
                 html5: true,
@@ -79,20 +79,32 @@ module.exports = {
                 removeComments: false
             }
         }),
-        new HtmlWebpackExternalsPlugin({
-            externals: [
-                {
-                    module: 'react',
-                    entry: 'https://11.url.cn/now/lib/16.2.0/react.min.js', // 此处最好用其他的cdn地址
-                    global: 'React',
-                },
-                {
-                    module: 'react-dom',
-                    entry: 'https://11.url.cn/now/lib/16.2.0/react-dom.min.js',
-                    global: 'ReactDOM',
-                }]
-        }),
+        // new HtmlWebpackExternalsPlugin({
+        //     externals: [
+        //         {
+        //             module: 'react',
+        //             entry: 'https://11.url.cn/now/lib/16.2.0/react.min.js', // 此处最好用其他的cdn地址
+        //             global: 'React',
+        //         },
+        //         {
+        //             module: 'react-dom',
+        //             entry: 'https://11.url.cn/now/lib/16.2.0/react-dom.min.js',
+        //             global: 'ReactDOM',
+        //         }]
+        // }),
         new CleanWebpackPlugin()
     ],
+    optimization: {
+        splitChunks: {
+            minSize: 0,
+            cacheGroups: {
+                commons: {
+                    name: 'commons',
+                    chunks: 'all',
+                    minChunks: 2
+                }
+            }
+        }
+    },
     devtool: 'source-map'
 }
