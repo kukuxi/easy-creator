@@ -1,6 +1,7 @@
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 
 const webpack = require('webpack');
 module.exports = {
@@ -52,7 +53,8 @@ module.exports = {
         new MiniCssExtractPlugin({
             filenam: `[name][contenthash:8].css`
         }),
-        new CleanWebpackPlugin()
+        new CleanWebpackPlugin(),
+        new FriendlyErrorsWebpackPlugin()
     ],
     devServer: {
         contentBase: './dist',
