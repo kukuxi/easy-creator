@@ -5,6 +5,6 @@ describe('webpack.base.js test case', () => {
     const webpackConfig = require('../../lib/webpack.config.js')
 
     it('entry', () => {
-        // assert.equal(webpackConfig.entry.index, 'webpackConfig.entity.index对应地址');
+        assert.equal(webpackConfig.entry.index.indexOf('/test/smoke/template/index.js') > -1, true);
     });
 });
