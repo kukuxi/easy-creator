@@ -6,7 +6,8 @@
     "scripts": {
         "test": "./node_modules/.bin/_mocha",
         "eslint": "eslint ./lib --fix",
-        "build": "webpack --config lib/webpack.prod.js"
+        "build": "webpack --config lib/webpack.prod.js",
+        "coverage": "nyc npm run test"
     },
     "keywords": [],
     "author": "",
@@ -18,8 +19,8 @@
         "eslint": "^5.16.0",
         "eslint-config-airbnb-base": "^13.2.0",
         "glob-all": "^3.1.0",
-        "istanbul": "^0.4.5",
         "mocha": "^7.1.1",
+        "nyc": "^15.0.0",
         "rimraf": "^2.6.3"
     },
     "dependencies": {
