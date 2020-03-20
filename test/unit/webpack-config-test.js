@@ -1,9 +1,10 @@
+
 const assert = require('assert');
 
-discribe("test webpack-config", () => {
-    const webpackConfig = require('../../lib/webpack.config');
+describe('webpack.base.js test case', () => {
+    const webpackConfig = require('../../lib/webpack.config.js')
 
     it('entry', () => {
-        assert.equal(webpackConfig.entry.index)
-    })
-})
+        // assert.equal(webpackConfig.entry.index, 'webpackConfig.entity.index对应地址');
+    });
+});
